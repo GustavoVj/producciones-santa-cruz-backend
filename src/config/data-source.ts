@@ -1,5 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
+import { Produccion } from "../entities/Produccion";
+import { ActivoInventario } from "../entities/ActivoInventario";
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -10,7 +12,7 @@ export const AppDataSource = new DataSource({
     database: "producciones_scz", // Asegúrate de crear esta base de datos en phpMyAdmin
     synchronize: true, // Esto creará las tablas automáticamente en base a tus entidades (ideal para desarrollo)
     logging: true, // Te permitirá ver las consultas SQL en la consola
-    entities: [], // Aquí conectaremos ActivoInventario y Produccion más adelante
+    entities: [Produccion, ActivoInventario], // Aquí conectaremos ActivoInventario y Produccion más adelante
     migrations: [],
     subscribers: [],
 });

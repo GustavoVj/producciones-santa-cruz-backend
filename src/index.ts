@@ -2,6 +2,7 @@ import "reflect-metadata";
 import express from "express";
 import cors from "cors";
 import { AppDataSource } from "./config/data-source";
+import produccionRoutes from "./routes/produccionRoutes";
 
 const app = express();
 
@@ -9,7 +10,9 @@ const app = express();
 app.use(cors());
 app.use(express.json()); // Permite recibir datos en formato JSON
 
-const PORT = process.env.PORT || 3000;
+app.use("/api/produccion", produccionRoutes);
+
+const PORT = process.env.PORT || 3001;
 
 // Inicializar la conexión a MySQL y luego levantar el servidor
 AppDataSource.initialize()
